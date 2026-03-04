@@ -6,10 +6,10 @@ document.addEventListener("DOMContentLoaded", function (){
         window.location.href = "../index.html";
     });
     filmes.addEventListener("click", function(e){
-        window.location.href = "/index (1).html?tipo=filme";
+        window.location.href = "/index.html?tipo=filme";
     });
     series.addEventListener("click", function(e){
-        window.location.href = "/index (1).html?tipo=serie";
+        window.location.href = "/index.html?tipo=serie";
     });
     const temaSalvo = localStorage.getItem("tema");
     if (temaSalvo === "claro"){
@@ -23,4 +23,16 @@ botaoTema.addEventListener("click", () => {
     ? "claro" 
     : "escuro";
     localStorage.setItem("tema", temaAtual);
+    ///
+    botaoTema.textContent = document.body.classList.contains
+    ("tema-claro") ? "🌙" : "☀️";
+    ///
 });
+
+const toggle = document.getElementById("toggleTema");
+
+if (toggle) { 
+  toggle.addEventListener("change", () => {
+    document.body.classList.toggle("tema-claro");
+  });
+}
