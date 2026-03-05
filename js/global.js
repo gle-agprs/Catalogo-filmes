@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function (){
     const filmes = document.getElementById("filmes");
     const series = document.getElementById("series");
     inicio.addEventListener("click", function(e){
-        window.location.href = "../index.html";
+        window.location.href = "/index.html";
     });
     filmes.addEventListener("click", function(e){
         window.location.href = "/index.html?tipo=filme";
@@ -11,28 +11,23 @@ document.addEventListener("DOMContentLoaded", function (){
     series.addEventListener("click", function(e){
         window.location.href = "/index.html?tipo=serie";
     });
-    const temaSalvo = localStorage.getItem("tema");
-    if (temaSalvo === "claro"){
+     
+    const temaSalvo = localStorage.getItem("botaoTema");
+
+    if (temaSalvo === "claro") {
         document.body.classList.add("tema-claro");
+        if (checkbox) checkbox.checked = true;
+    }
+
+    if (checkbox) {
+        checkbox.addEventListener("change", () => {
+            document.body.classList.toggle("tema-claro");
+
+            const temaAtual = document.body.classList.contains("tema-claro")
+                ? "claro"
+                : "escuro";
+
+            localStorage.setItem("tema", temaAtual);
+        });
     }
 });
-const botaoTema = document.getElementById("botaoTema");
-botaoTema.addEventListener("click", () => {
-    document.body.classList.toggle("tema-claro");
-    const temaAtual = document.body.classList.contains("tema-claro") 
-    ? "claro" 
-    : "escuro";
-    localStorage.setItem("tema", temaAtual);
-    ///
-    botaoTema.textContent = document.body.classList.contains
-    ("tema-claro") ? "🌙" : "☀️";
-    ///
-});
-
-const toggle = document.getElementById("toggleTema");
-
-if (toggle) { 
-  toggle.addEventListener("change", () => {
-    document.body.classList.toggle("tema-claro");
-  });
-}
