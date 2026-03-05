@@ -333,23 +333,32 @@ body.tema-claro{
 .botaoContainer {
     position: fixed;
     left: 20px;
-    bottom: 40px;
-    z-index: 9999;
+    bottom: 20px;
+    z-index: 99999;
+    background-color: var(--cinza-dark);
+    width: 65px;
+    border-radius: 15px;
+    min-height: 35px;
+    align-items: center;
 }
 
 .botaoContainer input {
     display: none;
+    background-color: red
 }
 
 .bolinha {
-    width: 60px;
-    height: 30px;
+    width: 40px;
+    height: 20px;
     background-color: #444;
     border-radius: 50px;
     position: relative;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    border: 2px solid red;
+    border-width: 2px;
+    top: 4px;
+    margin-left: 2px;
+    
 }
 
 /* bolinha*/
@@ -370,9 +379,8 @@ body.tema-claro{
     display: inline-block; 
 }
 
-/* quando ativa o tema claro */
 .botaoContainer input:checked + .bolinha {
-    background-color: var(--azul);
+    background-color: red;
 }
 
 .botaoContainer input:checked + .bolinha::before {
