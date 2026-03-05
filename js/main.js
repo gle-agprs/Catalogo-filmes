@@ -25,7 +25,8 @@ async function requisicaoURL(url){
 
 
 const botaoTema = document.getElementById("botaoTema");
-botaoTema.addEventListener("click", () => {
+
+botaoTema.addEventListener("change", () => {
     document.body.classList.toggle("tema-claro");
 });
 
@@ -55,7 +56,7 @@ filmes.forEach(filme => {
             `;
             }
             card.addEventListener("click", () => {
-                window.location.href = `pages/detalhes (1).html?id=${filme.id}&type=${filme.media_type}`
+                window.location.href = `pages/detalhes.html?id=${filme.id}&type=${filme.media_type}`
         });
     filmesGrid.appendChild(card);
     });
@@ -90,6 +91,7 @@ async function carregarGeneros (tipo = "movie") {
         
     });
 }
+/*filtrar por genero*/
 function filtrarPorGenero() {
     const generoId = document.getElementById("filtroGenero").
     value;
