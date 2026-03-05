@@ -12,7 +12,7 @@ const inicio = document.getElementById("inicio");
 
 if (inicio) {
     inicio.addEventListener("click", () => {
-        window.location.href = "../index (1).html";
+        window.location.href = "../index.html";
     });
 }
 window.addEventListener("load", function(){
@@ -27,7 +27,8 @@ window.addEventListener("load", function(){
 });
 
 const botaoTema = document.getElementById("botaoTema");
-botaoTema.addEventListener("click", () => {
+
+botaoTema.addEventListener("change", () => {
     document.body.classList.toggle("tema-claro");
 });
 
@@ -85,3 +86,28 @@ function renderizarDetalhes(item, trailerUrl){
     </div>
     `;
 }
+
+
+
+
+/*aqui a criança chora e  a mae nao ve😈*/
+async function buscarTrailer(id, type) {
+    const response = await fetch(
+        `${BASE_URL}/${type}/${id}/videos?api_key=${API_KEY}&language=pt-BR`
+    );
+
+    const data = await response.json();
+
+    const trailer = data.results.find(
+        video => video.site === "YouTube" && video.type === "Trailer"
+    );
+
+    if (trailer) {
+        return `https://www.youtube.com/watch?v=${trailer.key}`;
+    } else {
+        return null;
+    }
+}
+
+document.addEventListener("DOMContentLoaded", carregarDetalhes);
+
