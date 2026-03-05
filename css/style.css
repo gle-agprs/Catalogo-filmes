@@ -5,11 +5,13 @@
 /*logo titulo*/@import url('https://fonts.googleapis.com/css2?family=Bona+Nova+SC:ital,wght@0,400;0,700;1,400&family=Michroma&display=swap');
 
 :root{
-        --azul: #a93939;
+        --azul: #a939398a;
         --cinza-claro:#292929;
         --cinza-dark: rgb(32, 32, 32);
-        --ciano: #e11717;
+        --ciano: #f90000;
         --branco: white;
+        --campoP: rgba(129, 126, 126, 0.836);
+        --detalhes:white;
 }
 
 @media (max-width: 400px){
@@ -58,7 +60,7 @@ body{
 .logo {
                 font-size: 2.3rem;
                 font-family: "Michroma", sans-serif;
-                font-style: mono;
+                font-weight: bold;
 }
 
 .logo span{
@@ -86,6 +88,10 @@ body{
     margin:2rem 0;
 }
 
+#campoPesquisa::placeholder{
+    color: var(--campoP);
+}
+
 .pesquisa-conteudo{
     display: flex;
     justify-content: center;
@@ -102,12 +108,12 @@ body{
 }
 
 .pesquisa-conteudo input:focus {
-    box-shadow: 0 0 10px var(--azul);
+    box-shadow: 0 0 20px var(--azul);
 }
 
 .pesquisa-conteudo input {
     background-color: var(--cinza-dark);
-    color: rgba(87, 87, 87, 0.438);
+    color: var(--campoP);
 }
 .pesquisa-button{
     background-color: var(--azul);
@@ -168,7 +174,7 @@ body{
 }
 
 .card img:hover{
-    transform: scale(1.3); 
+    transform: scale(1.2); 
     z-index: 9999;
 }
 
@@ -199,13 +205,16 @@ body{
     max-width: 1200px;
     margin: 40px auto;
     padding: 0 1rem;
+    display: flex;
+    justify-content: space-between;
 }
+
 
 .detalhes-card {
     display: flex;
     gap: 40px;
     align-items: flex-start;
-    background-color: #1f1f1fb4;
+    background-color: #3c313190;
     padding: 30px;
     border-radius: 10px;
 }
@@ -213,11 +222,13 @@ body{
 .detalhes-card img {
     width: 300px;
     border-radius: 10px;
+    display: flex;
 }
 
 .detalhes-info {
     flex: 1;
     font-family: "Red Rose", serif;
+    color: var(--detalhes);
 }
 
 .detalhes-info h2 {
@@ -233,7 +244,7 @@ body{
 
 .botao-trailer{
     text-decoration:double;
-    color: var(--azul);
+    color: var(--ciano);
 }
 
 @media (max-width: 768px) {
@@ -275,7 +286,7 @@ body{
     top: 0;
     left: 0;
     width: 100%;
-    height: 100;
+    height: 100vh;
     background-color: rgba(0, 0, 0, 0.0);
     display: flex;
     justify-content: center;
@@ -306,17 +317,6 @@ body{
     opacity: 1;
 }
 
-/*configuracao para a pagina de detalhes*/
-
-.detalhesContainer{
-    display: flex;
-    justify-content: space-between;
-
-}
-
-.detalhes-card{
-    display: flex;
-}
 
 body.tema-claro{
     --cinza-claro:#d7d7d7e9;
@@ -324,73 +324,68 @@ body.tema-claro{
     --branco: rgb(106, 106, 106);
     --preto: black;
     color: #1f1f1fd8;
+    --campoP: rgb(232, 207, 207);
+    --detalhes: rgba(241, 229, 229, 0.945);
 
 }
 
+/* aqui a criança chora e a mae nao ve😈 */
+.botaoContainer {
+    position: fixed;
+    left: 20px;
+    bottom: 40px;
+    z-index: 9999;
+}
 
+.botaoContainer input {
+    display: none;
+}
 
-#botaoTema{
-    background-color: transparent;
-    border-radius: 2px;
-    border-color: rgba(255, 0, 0, 0.329);
+.bolinha {
+    width: 60px;
+    height: 30px;
+    background-color: #444;
+    border-radius: 50px;
+    position: relative;
     cursor: pointer;
-    color: var(--preto);
+    transition: background-color 0.3s ease;
+    border: 2px solid red;
 }
 
-/* container fixo no canto inferior esquerdo */
-.tema-switch {
-  position: fixed;
-  bottom: 20px;
-  left: 20px;
-  z-index: 9999;
+/* bolinha*/
+.bolinha::before {
+    content: "🌙";
+    width: 24px;
+    height: 24px;
+    background-color: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 4px;
+    left: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    transition: transform 0.3s ease, content 0.3s ease;
+    display: inline-block; 
 }
 
-/* esconder o checkbox real */
-.tema-switch input {
-  display: none;
+/* quando ativa o tema claro */
+.botaoContainer input:checked + .bolinha {
+    background-color: var(--azul);
 }
 
-/* fundo do switch */
-.switch {
-  width: 60px;
-  height: 30px;
-  background-color: var(--cinza-dark);
-  border-radius: 50px;
-  position: relative;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+.botaoContainer input:checked + .bolinha::before {
+    transform: translateX(30px);
+    content: "☀️";
 }
 
-/* bolinha com ícone */
-.switch::before {
-  content: "🌙";
-  width: 24px;
-  height: 24px;
-  background-color: white;
-  border-radius: 50%;
-  position: absolute;
-  top: 3px;
-  left: 3px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 14px;
-  transition: transform 0.3s ease, content 0.3s ease;
-}
-
-/* estado ativado */
-.tema-switch input:checked + .switch {
-  background-color: var(--azul);
-}
-
-.tema-switch input:checked + .switch::before {
-  transform: translateX(30px);
-  content: "☀️";
-}
-
-/* animação suave para troca de cores do site */
-body {
-  transition: background-color 0.4s ease, color 0.4s ease;
+#filtroGenero{
+    border-radius: 15px;
+    height: 2rem;
+    background-color: var(--cinza-dark);
+    border-color: transparent;
+    color: var(--campoP);
 }
 
 
