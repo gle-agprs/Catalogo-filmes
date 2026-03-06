@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function (){
         window.location.href = "/index.html?tipo=serie";
     });
      
-    const temaSalvo = localStorage.getItem("botaoTema");
+    /*const temaSalvo = localStorage.getItem("botaoTema");
 
     if (temaSalvo === "claro") {
         document.body.classList.add("tema-claro");
@@ -30,4 +30,33 @@ document.addEventListener("DOMContentLoaded", function (){
             localStorage.setItem("tema", temaAtual);
         });
     }
-});
+});*/
+
+document.addEventListener("DOMContentLoaded", () => {
+
+        const botaoTema = document.getElementById("botaoTema");
+
+            // aplica o tema salvo
+                const temaSalvo = localStorage.getItem("tema");
+
+                    if (temaSalvo === "claro") {
+                            document.body.classList.add("tema-claro");
+                                    if(botaoTema) botaoTema.checked = true;
+                                        }
+
+                                            if(botaoTema){
+                                                    botaoTema.addEventListener("change", () => {
+
+                                                                if(botaoTema.checked){
+                                                                                document.body.classList.add("tema-claro");
+                                                                                                localStorage.setItem("tema","claro");
+                                                                                                            }else{
+                                                                                                                            document.body.classList.remove("tema-claro");
+                                                                                                                                            localStorage.setItem("tema","escuro");
+                                                                                                                                                        }
+
+                                                                                                                                                                });
+                                                                                                                                                                    }
+
+                                                                                                                                                                    });
+})
