@@ -43,20 +43,22 @@ filmes.forEach(filme => {
         const imagem = filme.poster_path
             ? IMAGE_URL + filme.poster_path
             : "";
-    
+        let media_type = "movie";
             if(filme.title){
                 card.innerHTML = `
                 <img src ="${imagem}" alt="${filme.title}">
                 <h3>${filme.title}</h3>
                 `;
+                media_type = "movie";                ;
             }else{
                 card.innerHTML = `
                 <img src ="${imagem}" alt="${filme.name}">
                 <h3>${filme.name}</h3>
             `;
+            media_type = "tv";
             }
             card.addEventListener("click", () => {
-                window.location.href = `pages/detalhes.html?id=${filme.id}&type=${filme.media_type}`
+                window.location.href = `pages/detalhes.html?id=${filme.id}&type=${media_type}`
         });
     filmesGrid.appendChild(card);
     });
